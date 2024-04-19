@@ -79,6 +79,10 @@ try:
         conf_map[opt](opt)
     else:
         change_conf(opt)
+    
+    # 写配置
+    with open(config_path, 'w') as configfile:
+        config.write(configfile)
 except subprocess.CalledProcessError as e:
     print(e.output)
     
