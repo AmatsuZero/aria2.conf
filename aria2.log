@@ -6768,3 +6768,31 @@ Exception: [AbstractCommand.cc:340] errorCode=2 Timeout.
 04/18 00:21:06 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6800
 
 04/18 00:21:07 [[1;32mNOTICE[0m] Serialized session to '/home/steamdeck/aria2.conf/aria2.session' successfully.
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [文件保存设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [进度保存设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [下载连接设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [BT/PT 下载设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [客户端伪装]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [执行额外命令]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [RPC 设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [日志设置]
+
+04/18 20:15:19 [[1;33mWARN[0m] Unknown option: [增强扩展设置(非官方)]
+
+04/18 20:15:19 [[1;32mNOTICE[0m] IPv4 RPC: listening on TCP port 6800
+
+04/18 20:15:20 [[1;32mNOTICE[0m] Serialized session to '/home/steamdeck/aria2.conf/aria2.session' successfully.
+
+04/18 20:22:49 [[1;32mNOTICE[0m] IPv4 DHT: listening on UDP port 51413
+
+04/18 20:22:49 [[1;32mNOTICE[0m] IPv4 BitTorrent: listening on TCP port 51413
+
+04/18 20:22:50 [[1;32mNOTICE[0m] Serialized session to '/home/steamdeck/aria2.conf/aria2.session' successfully.
