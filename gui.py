@@ -3,7 +3,7 @@ import os
 import subprocess
 
 config = ConfigParser()
-config_path = os.path.join(os.getcwd(), "aria2.conf")
+config_path = os.path.join(os.getcwd(), "aria2.local.conf")
 config.read(config_path)
 
 def command(args: list[str]) -> str:
@@ -19,7 +19,7 @@ def read_conf() -> str:
         items = config.items(section)
         for (key, val) in items:
             # 这里感觉是 zenity 的 bug，不加引号，执行会报错
-            args.append(f'"{key}"' if '-' in key else key),
+            args.append(f'"{key}"' if '-' in key else key)
             args.append(f'"{val}"' if '-' in val else val)
 
     return command(args)
@@ -35,7 +35,8 @@ def change_conf(opt: str):
         'zenity', '--entry', f'--title=修改选项: {opt}',
         '--entry-text', config['local'][opt],
     ])
-    if conf.count > 0:
+    
+    if conf:
         config['local'][opt] = conf
 
 def change_file(opt: str):
@@ -53,7 +54,7 @@ def change_flag(opt: str):
 
 # 生成配置
 def generate_conf_map():
-    map = {
+    m = {
         'dir': change_dir,
         'input-file': change_file,
         'save-session': change_file,
@@ -65,11 +66,23 @@ def generate_conf_map():
     items = config.items('local')
     for (key, val) in items:
         if val == 'true' or val == 'false':
-            map[key] = change_flag
+            m[key] = change_flag
 
-    return map
+    return m
 
 conf_map = generate_conf_map()
+
+def trim_space():
+    # first get all lines from file
+    with open(config_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    # remove spaces
+    lines = [line.replace(' ', '') for line in lines]
+
+    # finally, write lines in the file
+    with open(config_path, 'w', encoding='utf-8') as f:
+        f.writelines(lines)
 
 try:
     opt = read_conf()
@@ -81,8 +94,11 @@ try:
         change_conf(opt)
     
     # 写配置
-    with open(config_path, 'w') as configfile:
+    with open(config_path, 'w', encoding='utf-8') as configfile:
         config.write(configfile)
+    
+    # 干掉空格，不然脚本读取会有问题
+    trim_space()
 except subprocess.CalledProcessError as e:
     print(e.output)
     
